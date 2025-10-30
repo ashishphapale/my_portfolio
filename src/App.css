@@ -1,0 +1,179 @@
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Make the React App's top-level container participate in flex so footer pins to bottom */
+#root > div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* ==== Portfolio Styles (appended) ==== */
+:root {
+  --primary: #007bff;
+  --accent: #17a2b8;
+  --bg: #f8f9fa;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --nav-h: 68px;
+}
+
+:root[data-theme='dark']{
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+/* Restore normal document flow: no snap, no forced heights */
+main {
+  height: auto;
+  overflow: visible;
+  scroll-snap-type: none;
+  overscroll-behavior-y: auto;
+  scroll-padding-top: 0;
+  flex: 1 0 auto;
+}
+main > section {
+  min-height: auto;
+  overflow: visible;
+}
+main > section .container.section {
+  min-height: auto;
+  display: block; /* allow natural flow */
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Keep Home a bit lower under the navbar per your preference */
+#home .container.section { padding-top: 40px; }
+
+/* Push About section further downward (slightly less) */
+#about .container.section { padding-top: 96px; }
+
+/* Make Contact section smaller */
+#contact .container.section { padding-top: 8px; padding-bottom: 8px; }
+#contact .subtitle { margin-bottom: 4px; }
+#contact .grid { gap: 6px; }
+#contact .card { padding: 8px; }
+#contact .card h4 { margin: 2px 0 2px; }
+#contact input, #contact textarea { padding: 6px !important; font-size: 14px; }
+#contact .btn { padding: 6px 10px; font-size: 13px; }
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+
+.container { width: min(1100px, 92%); margin: 0 auto; }
+.section { padding: 32px 0; }
+.title { font-size: 24px; margin: 0 0 14px; }
+.subtitle { color: var(--muted); margin-bottom: 16px; }
+
+.navbar {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(6px);
+  background: color-mix(in oklab, var(--bg), transparent 15%);
+  border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 90%);
+}
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 0; }
+.navbar { min-height: var(--nav-h); }
+.nav-links { display: flex; gap: 16px; align-items: center; }
+.nav-link { padding: 8px 12px; border-radius: 8px; color: var(--muted); font-size: 15px; }
+.nav-link.active, .nav-link:hover { color: var(--text); background: color-mix(in oklab, var(--primary), var(--bg) 85%); }
+.theme-toggle { border: 1px solid color-mix(in oklab, var(--text), transparent 70%); background: transparent; color: var(--text); border-radius: 8px; padding: 4px 8px; cursor: pointer; }
+
+.hero { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: center; padding: 48px 0; }
+.hero h1 { font-size: clamp(28px, 5vw, 48px); margin: 0 0 12px; }
+.hero p { color: var(--muted); margin: 0 0 20px; }
+.hero-actions { display: flex; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; border-radius: 10px; padding: 10px 14px; cursor: pointer; font-weight: 600; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-outline { border-color: color-mix(in oklab, var(--text), transparent 75%); color: var(--text); background: transparent; }
+
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.card { border: 1px solid color-mix(in oklab, var(--text), transparent 85%); padding: 18px; border-radius: 12px; background: color-mix(in oklab, var(--bg), transparent 5%); }
+.card h4 { margin: 8px 0 6px; }
+.card p { margin: 0; color: var(--muted); }
+
+/* Subtle elevation + motion */
+.card { transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px color-mix(in oklab, var(--text), transparent 92%); border-color: color-mix(in oklab, var(--primary), transparent 60%); }
+
+.footer { border-top: 1px solid color-mix(in oklab, var(--text), transparent 90%); padding: 8px 0; margin-top: 12px; color: var(--muted); font-size: 12px; }
+.footer small { font-size: 12px; }
+
+/* Make Skills containers larger */
+#skills .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+#skills .card { padding: 24px; }
+#skills .skill-pill { font-size: 15px; padding: 10px 14px; }
+
+/* Make Contact section more compact */
+#contact .card { padding: 14px; }
+
+/* Skill pills */
+.skill-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.skill-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 9999px; font-weight: 500; font-size: 14px;
+  border: 1px solid color-mix(in oklab, var(--text), transparent 85%);
+  background: color-mix(in oklab, var(--bg), var(--primary) 3%);
+  color: var(--text);
+}
+
+@media (max-width: 860px){
+  .hero { grid-template-columns: 1fr; }
+  main { height: auto; }
+  main > section { min-height: auto; }
+}
